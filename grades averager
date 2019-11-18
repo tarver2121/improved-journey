@@ -1,0 +1,80 @@
+# improved-journey
+//These are projects I have done in a C++ course 
+//
+//  main.cpp
+//  
+//
+//  Created by user1 on 10/24/19.
+//  Copyright © 2019 Andrew. All rights reserved.
+//  This program will average the grades that the user puts into the program 
+
+#include <iostream>
+#include <cstdlib>
+#include <string>
+#include <vector>
+#include <numeric>
+using namespace std;
+vector<double> grades;
+int grad;
+double sum,num,ave,anum;
+string ans,n;
+
+void SayHello(){
+    cout << " hello user type in how many grades you would like to average " << endl;
+    }
+
+void HowManyGrades(){
+    cin >> num;
+    anum = num; // anum is the authentic number while num is the variable passed through the loop
+    while(num >= 1)
+    {cout << " type in the grade " << endl;
+        cin >> grad;
+        if(grad < 0.00)
+        {cout << "choose a number higher than 0.00" << endl;}
+        else if(grad >= 0.00)
+        {grades.push_back(grad); // loop adds a grade to the vector
+            num = num - 1;}
+        
+    }
+
+    cout << accumulate(grades.begin(),grades.end(),0) << endl; // this adds up the grades in the vector and displays them
+    
+    sum = accumulate(grades.begin(),grades.end(),0);// sum is the sum of the numbers in the vector
+    ave = sum/anum; // ave is the average
+    
+    cout << ave << " is the average grade " << endl;
+}
+
+void sortGrades(){
+    
+    sort(grades.begin(), grades.end());
+    
+      cout << "These are your grades \n";
+      for (auto x : grades)
+          cout << x << " ";
+}
+
+int main() {
+    
+
+    cout << " do you want to calculate your grade average y/n " << endl;
+    cin >> n;
+    while(n=="y")
+    {   SayHello();
+        HowManyGrades();
+        sortGrades();
+        cout << "\n do you want to go again? y/n " << endl;
+        cin >> n;
+        
+
+    }
+    if(n=="n")
+    {cout << "have a good day" << endl;}
+    else
+    {cout << "you typed in an invalid response type in y for yes and n for n" << endl;}
+   
+    
+    return 0;
+
+
+}
